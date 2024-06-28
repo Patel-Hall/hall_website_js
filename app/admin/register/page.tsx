@@ -1,7 +1,7 @@
 import React from 'react'
 import { RegisterForm } from '@/components'
 import { getServerSession } from 'next-auth'
-import {authOptions} from '../../api/auth/[...nextauth]/route';
+import {authOptions} from '../../api/auth/[...nextauth]/options';
 import { redirect } from 'next/navigation';
 
 const page = async () => {
