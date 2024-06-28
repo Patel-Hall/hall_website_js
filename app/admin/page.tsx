@@ -10,9 +10,7 @@ const page = () => {
 
   const logoutUser = async()=>{
     try {
-        await signOut({redirect:false});
-
-        redirect("/admin/login");
+        await signOut();
     } catch (error) {
         console.log(error);
     }
