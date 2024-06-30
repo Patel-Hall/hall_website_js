@@ -82,7 +82,7 @@ const RegisterForm = () => {
             <button className='bg-primary text-secondary font-bold px-6 py-2'>Register</button>
 
             {error && (
-                <div className='bg-red-500 text-white w-fit text-sm py-1 px-3 roudn mt-2'>
+                <div className='bg-red-500 text-white w-fit text-sm py-1 px-3 round mt-2'>
                     {error}
                 </div>
             )}
