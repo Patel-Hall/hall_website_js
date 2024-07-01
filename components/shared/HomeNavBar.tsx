@@ -1,7 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { HomeNavBarLogo } from "@/public/assets";
-import Image from "next/image";
 import Link from "next/link";
 import { navBarItems } from "@/constants";
 import { CldImage } from "next-cloudinary";
@@ -39,7 +37,10 @@ const HomeNavBar = () => {
   }, []);
 
   return (
-    <nav className="bg-primary text-secondary fixed z-30 flex flex-row w-full items-center justify-between px-6 py-3 opacity-75">
+    <nav
+      className="bg-primary text-secondary fixed z-30 flex flex-row w-full items-center justify-between px-6 py-3 opacity-75"
+      id="navBar"
+    >
       <Link href="/" className="flex items-center justify-start mx-10">
         {loading ? (
           <p>Loading...</p>

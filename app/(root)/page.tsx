@@ -3,6 +3,8 @@ import {
   HomeNavBar,
   AboutUsSection,
   QuoteSection,
+  NotableAlumniSection,
+  Footer,
 } from "@/components";
 
 export default function Home() {
@@ -12,6 +14,8 @@ export default function Home() {
       <HeroSection />
       <AboutUsSection />
       <QuoteSection />
+      <NotableAlumniSection />
+      <Footer />
     </div>
   );
 }
