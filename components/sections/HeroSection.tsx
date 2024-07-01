@@ -42,13 +42,13 @@ const HeroSection = () => {
         <p>Error</p>
       ) : (
         <div>
-          <div className="relative h-full z-0">
+          <div className="relative h-screen w-full z-0">
             <CldImage
               src={hallInfo.heroBackgroundPhotoUrl}
               alt="Hero Profile"
-              className="object-cover w-full"
-              width={2000}
-              height={1000}
+              className="h-screen w-full"
+              fill={true}
+              crop="auto"
             />
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
           </div>
