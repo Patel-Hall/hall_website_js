@@ -86,7 +86,7 @@ const page = () => {
               <div className="bg-primary py-3 px-2">
                 <CldImage
                   src={hallInfo.dragonLogoUrl}
-                  alt="Website Logo"
+                  alt="Website Dragon Logo"
                   width={100}
                   height={50}
                 />

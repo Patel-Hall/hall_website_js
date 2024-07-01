@@ -36,7 +36,10 @@ const AboutUsSection = () => {
   }, []);
 
   return (
-    <div className="h-auto bg-secondary flex flex-row px-7 py-12 gap-5">
+    <div
+      className="h-auto bg-secondary flex flex-row px-7 py-12 gap-10"
+      id="about"
+    >
       <div
         className="flex flex-col w-auto uppercase"
         style={{ fontFamily: "Shango" }}
