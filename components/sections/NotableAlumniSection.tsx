@@ -1,8 +1,8 @@
 import React from "react";
 
-const NotableAlumni = () => {
+const NotableAlumni: React.FC<any> = ({ hallInfo }) => {
   return (
-    <div className="h-auto bg-secondary px-7 py-12" id="notableAlumni">
+    <div className="h-auto w-full bg-secondary px-7 py-12" id="notableAlumni">
       <div className="w-fit">
         <h1
           className="text-black uppercase text-4xl"

@@ -5,38 +5,8 @@ import { navBarItems } from "@/constants";
 import { CldImage } from "next-cloudinary";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 
-const HomeNavBar = () => {
+const HomeNavBar: React.FC<any> = ({ hallInfo }) => {
   const [toggle, setToggle] = useState(false);
-  const [hallInfo, setHallInfo] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<any>(null);
-
-  const fetchHallInfo = async () => {
-    setLoading(true);
-    setError("");
-
-    try {
-      const response = await fetch("/api/getHallInfo", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        setHallInfo(data.hallInfo);
-      } else {
-        setError(data);
-      }
-    } catch (err) {
-      setError(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchHallInfo();
-  }, []);
 
   return (
     <div>
@@ -48,19 +18,13 @@ const HomeNavBar = () => {
           href="/"
           className="flex items-center justify-start ml-2 md:ml-2 lg:ml-5"
         >
-          {loading ? (
-            <p>Loading...</p>
-          ) : error ? (
-            <p>Error</p>
-          ) : (
-            <CldImage
-              src={hallInfo.logoUrl}
-              alt="home-logo"
-              height={50}
-              width={166}
-              className="h-[30px] w-[100px] md:h-[35px] md:w-[110px] lg:h-[40px] lg:w-[125px] xl:h-[50px] xl:w-[160px]"
-            />
-          )}
+          <CldImage
+            src={hallInfo.logoUrl}
+            alt="home-logo"
+            height={50}
+            width={166}
+            className="h-[30px] w-[100px] md:h-[35px] md:w-[110px] lg:h-[40px] lg:w-[125px] xl:h-[50px] xl:w-[160px]"
+          />
         </Link>
         <div
           className="flex flex-1 justify-end gap-3 md:gap-4 lg:gap-7 xl:gap-12 md:mx-1 lg:mx-3 xl:mx-5"
