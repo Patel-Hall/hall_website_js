@@ -36,8 +36,11 @@ const HomeNavBar: React.FC<any> = ({ hallInfo }) => {
                 key={index}
                 className="flex-col text-sm md:text-md lg:text-lg xl:text-xl"
               >
-                <Link href="/" className="no-underline uppercase flex-col">
-                  <p>{link}</p>
+                <Link
+                  href={link.link}
+                  className="no-underline uppercase flex-col"
+                >
+                  <p>{link.name}</p>
                 </Link>
               </div>
             );
@@ -60,13 +63,14 @@ const HomeNavBar: React.FC<any> = ({ hallInfo }) => {
               />
               <ul className="list-none h-full w-full flex justify-start items-start flex-col">
                 {navBarItems.map((item) => (
-                  <li key={item} className="m-4">
+                  <li key={item.name} className="m-4">
                     <a
                       className="no-underline uppercase font-bold"
+                      href={item.link}
                       onClick={() => setToggle(false)}
                       style={{ fontFamily: "Shango" }}
                     >
-                      {item}
+                      {item.name}
                     </a>
                   </li>
                 ))}
