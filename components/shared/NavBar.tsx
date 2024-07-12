@@ -1,36 +1,61 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { navBarItems } from "@/constants";
 import { CldImage } from "next-cloudinary";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 
-const HomeNavBar: React.FC<any> = ({ hallInfo }) => {
+const NavBar: React.FC<any> = ({ hallInfo }) => {
   const [toggle, setToggle] = useState(false);
+  const [firstHalf, setFirstHalf] = useState<any>([]);
+  const [secondHalf, setSecondHalf] = useState<any>([]);
+
+  useEffect(() => {
+    const middle = Math.floor(navBarItems.length / 2);
+    setFirstHalf(navBarItems.slice(0, middle));
+    setSecondHalf(navBarItems.slice(middle));
+  }, []);
 
   return (
     <div>
       <nav
-        className="bg-primary text-secondary fixed z-30 hidden md:flex md:flex-row w-full items-center justify-between px-1 md:px-2 lg:px-4 xl:px-7 py-3 opacity-75"
+        className="bg-primary text-secondary hidden md:flex md:flex-row w-full items-center justify-center gap-5 px-1 md:px-2 lg:px-4 xl:px-7 py-3"
         id="navBar"
       >
-        <Link
-          href="/"
-          className="flex items-center justify-start ml-2 md:ml-2 lg:ml-5"
-        >
-          <CldImage
-            src={hallInfo.logoUrl}
-            alt="home-logo"
-            height={50}
-            width={166}
-            className="h-[30px] w-[100px] md:h-[35px] md:w-[110px] lg:h-[40px] lg:w-[125px] xl:h-[50px] xl:w-[160px]"
-          />
-        </Link>
         <div
           className="flex flex-1 justify-end gap-3 md:gap-4 lg:gap-7 xl:gap-12 md:mx-1 lg:mx-3 xl:mx-5"
           style={{ fontFamily: "Shango" }}
         >
-          {navBarItems.map((link, index) => {
+          {firstHalf.map((link: any, index: string) => {
+            return (
+              <div
+                key={index}
+                className="flex-col text-sm md:text-md lg:text-lg xl:text-xl"
+              >
+                <Link
+                  href={link.link}
+                  className="no-underline uppercase flex-col"
+                >
+                  <p>{link.name}</p>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+        <Link href="/" className="flex items-center justify-start">
+          <CldImage
+            src={hallInfo.dragonLogoUrl}
+            alt="home-logo"
+            height={100}
+            width={100}
+            className="h-[30px] w-[30px] md:h-[50px] md:w-[50px] lg:h-[60px] lg:w-[60px] xl:h-[70px] xl:w-[70px]"
+          />
+        </Link>
+        <div
+          className="flex flex-1 justify-start gap-3 md:gap-4 lg:gap-7 xl:gap-12 md:mx-1 lg:mx-3 xl:mx-5"
+          style={{ fontFamily: "Shango" }}
+        >
+          {secondHalf.map((link: any, index: string) => {
             return (
               <div
                 key={index}
@@ -83,4 +108,4 @@ const HomeNavBar: React.FC<any> = ({ hallInfo }) => {
   );
 };
 
-export default HomeNavBar;
+export default NavBar;

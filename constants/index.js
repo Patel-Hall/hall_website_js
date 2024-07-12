@@ -13,7 +13,7 @@ export const navBarItems = [
   },
   {
     name: "Office Bearers",
-    link: "/",
+    link: "/officeBearers/2023-24",
   },
   {
     name: "Facilities",
@@ -24,3 +24,5 @@ export const navBarItems = [
     link: "/",
   },
 ];
+
+export const testCouncil = [];
