@@ -1,61 +1,72 @@
 import { connectToMongoDB } from "@/lib/mongodb";
-import User from "@/models/user";
+import Patelian from "@/models/patelian";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from 'bcryptjs';
+import bcrypt from "bcryptjs";
 
-interface Credentials{
-    email:string,
-    password:string,
+interface Credentials {
+  email: string;
+  password: string;
 }
 
-export const authOptions: NextAuthOptions={
-    providers:[
-        CredentialsProvider({
-            name:"credentials",
-            credentials:{
-                email:{
-                    label:"Email",
-                    type:"email",
-                    placeholder:"email",
-                },
-                password:{
-                    label:"Password",
-                    type:"password",
-                    placeholder:"password",
-                },
-            },
-            async authorize(credentials){
-                const {email,password}=credentials as Credentials;
-                try {
-                    await connectToMongoDB();
-                    const user=await User.findOne({email});
+export const authOptions: NextAuthOptions = {
+  providers: [
+    CredentialsProvider({
+      name: "credentials",
+      credentials: {
+        email: {
+          label: "Email",
+          type: "email",
+          placeholder: "email",
+        },
+        password: {
+          label: "Password",
+          type: "password",
+          placeholder: "password",
+        },
+      },
+      async authorize(credentials) {
+        const { email, password } = credentials as Credentials;
+        try {
+          await connectToMongoDB();
+          const patelian = await Patelian.findOne({ email });
 
-                    
-                    if(!user){
-                        return null;
-                    }
-                    
+          if (!patelian) {
+            return null;
+          }
 
-                    const matchPassword=await bcrypt.compare(password,user?.password.toString());
+          const matchPassword = await bcrypt.compare(
+            password,
+            patelian?.password.toString()
+          );
 
-                    if(!matchPassword){
-                        return null;
-                    }
+          if (!matchPassword) {
+            return null;
+          }
 
-                    return user;
-                } catch (error) {
-                    console.log("Error: ",error);
-                }
-            }
-        })
-    ],
-    session:{
-        strategy: "jwt",
+          return patelian;
+        } catch (error) {
+          console.log("Error: ", error);
+        }
+      },
+    }),
+  ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) token.role = user.role;
+      return token;
     },
-    secret: process.env.NEXTAUTH_SECRET,
-    pages:{
-        signIn:"/admin/login",
-        signOut:"/",
-    }
-}
+    async session({ session, token }) {
+      session.user = {
+        ...session.user,
+        role: token.role as string,
+      };
+      return session;
+    },
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: "/patelian/login",
+    signOut: "/",
+  },
+};

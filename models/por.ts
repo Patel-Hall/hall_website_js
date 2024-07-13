@@ -1,6 +1,6 @@
-import mongoose, { Schema, model, models } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
-const hcmSchema = new Schema({
+const porSchema = new Schema({
   post: {
     type: String,
     required: true,
@@ -22,5 +22,5 @@ const hcmSchema = new Schema({
   },
 });
 
-const HCM = models.HCM || model("HCM", hcmSchema);
-export default HCM;
+const POR = models.POR || model("POR", porSchema);
+export default POR;
