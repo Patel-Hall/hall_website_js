@@ -16,22 +16,20 @@ const page = () => {
   };
 
   return (
-    <AuthRoute roles={["Admin"]}>
-      <div className="grid place-items-center">
-        <h1>Logged into Patel Hall of Residence Admin Panel</h1>
-        <h2>Name: {session?.user?.name}</h2>
-        <h2>Email: {session?.user?.email}</h2>
-        <Link
-          href={"/patelian/admin/editHallInfo"}
-          className="bg-primary px-6 py-2 mt-2"
-        >
-          Edit Hall Information
-        </Link>
-        <button onClick={logoutUser} className="bg-primary px-6 py-2 mt-2">
-          Log out
-        </button>
-      </div>
-    </AuthRoute>
+    <div className="grid place-items-center">
+      <h1>Logged into Patel Hall of Residence Admin Panel</h1>
+      <h2>Name: {session?.user?.name}</h2>
+      <h2>Email: {session?.user?.email}</h2>
+      <Link
+        href={"/patelian/admin/editHallInfo"}
+        className="bg-primary px-6 py-2 mt-2"
+      >
+        Edit Hall Information
+      </Link>
+      <button onClick={logoutUser} className="bg-primary px-6 py-2 mt-2">
+        Log out
+      </button>
+    </div>
   );
 };
 

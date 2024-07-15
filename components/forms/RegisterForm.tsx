@@ -3,6 +3,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -11,6 +13,8 @@ const RegisterForm = () => {
   const [rollNo, setRollNo] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [showPass, setShowPass] = useState(false);
+  const [showPass2, setShowPass2] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
 
@@ -108,18 +112,35 @@ const RegisterForm = () => {
           type="text"
           placeholder="Roll No"
         />
-        <input
-          onChange={(e) => setPassword(e.target.value)}
-          className="login_form_input"
-          type="password"
-          placeholder="Password*"
-        />
-        <input
-          onChange={(e) => setPassword2(e.target.value)}
-          className="login_form_input"
-          type="password"
-          placeholder="Re-enter Password*"
-        />
+        <div className="relative">
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            className="login_form_input"
+            type={showPass ? "text" : "password"}
+            placeholder="Password"
+          />
+          <span
+            className="absolute top-1/4 right-2 cursor-pointer"
+            onClick={() => setShowPass(!showPass)}
+          >
+            <FontAwesomeIcon icon={showPass ? faEyeSlash : faEye} />
+          </span>
+        </div>
+        <div className="relative">
+          <input
+            onChange={(e) => setPassword2(e.target.value)}
+            className="login_form_input"
+            type={showPass2 ? "text" : "password"}
+            placeholder="Re-enter Password*"
+          />
+          <span
+            className="absolute top-1/4 right-2 cursor-pointer"
+            onClick={() => setShowPass2(!showPass2)}
+          >
+            <FontAwesomeIcon icon={showPass2 ? faEyeSlash : faEye} />
+          </span>
+        </div>
+
         <button className="bg-primary text-secondary font-bold px-6 py-2">
           Register
         </button>

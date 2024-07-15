@@ -1,6 +1,7 @@
 "use client";
 import { AuthRoute } from "@/components";
 import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 import React from "react";
 
 const page = () => {
@@ -15,15 +16,19 @@ const page = () => {
   };
 
   return (
-    <AuthRoute roles={["Boarder"]}>
-      <div>
-        Welcome, Boarder!
-        <div>Name: {session?.user?.name}</div>
-        <button onClick={logoutUser} className="bg-primary px-6 py-2 mt-2">
-          Log out
-        </button>
-      </div>
-    </AuthRoute>
+    <div className="grid place-items-center">
+      Welcome, Boarder!
+      <div>Name: {session?.user?.name}</div>
+      <Link
+        href={"/patelian/boarder/editProfile"}
+        className="bg-primary px-6 py-2 mt-2"
+      >
+        Edit Profile
+      </Link>
+      <button onClick={logoutUser} className="bg-primary px-6 py-2 mt-2">
+        Log out
+      </button>
+    </div>
   );
 };
 

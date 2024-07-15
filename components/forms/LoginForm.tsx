@@ -3,11 +3,14 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPass, setShowPass] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,12 +46,20 @@ const LoginForm = () => {
           type="email"
           placeholder="Email"
         />
-        <input
-          onChange={(e) => setPassword(e.target.value)}
-          className="login_form_input"
-          type="password"
-          placeholder="Password"
-        />
+        <div className="relative">
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            className="login_form_input"
+            type={showPass ? "text" : "password"}
+            placeholder="Password"
+          />
+          <span
+            className="absolute top-1/4 right-2 cursor-pointer"
+            onClick={() => setShowPass(!showPass)}
+          >
+            <FontAwesomeIcon icon={showPass ? faEyeSlash : faEye} />
+          </span>
+        </div>
         <button className="bg-primary text-secondary font-bold px-6 py-2">
           Login
         </button>

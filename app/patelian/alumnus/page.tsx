@@ -15,15 +15,13 @@ const page = () => {
   };
 
   return (
-    <AuthRoute roles={["Alumnus"]}>
-      <div>
-        Welcome, Alumnus!
-        <div>Name: {session?.user?.name}</div>
-        <button onClick={logoutUser} className="bg-primary px-6 py-2 mt-2">
-          Log out
-        </button>
-      </div>
-    </AuthRoute>
+    <div>
+      Welcome, Alumnus!
+      <div>Name: {session?.user?.name}</div>
+      <button onClick={logoutUser} className="bg-primary px-6 py-2 mt-2">
+        Log out
+      </button>
+    </div>
   );
 };
 
