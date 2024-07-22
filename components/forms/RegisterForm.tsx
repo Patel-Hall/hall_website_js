@@ -57,9 +57,9 @@ const RegisterForm = () => {
         body: JSON.stringify({ email }),
       });
 
-      const { user } = await resUserExists.json();
+      const { userExists } = await resUserExists.json();
 
-      if (user) {
+      if (userExists) {
         setError("User already exists!");
         return;
       }

@@ -94,7 +94,7 @@ const page = () => {
                 />
               </div>
               <CldUploadWidget
-                uploadPreset={process.env.CLOUDINARY_UPLOAD_PRESET}
+                uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
                 onSuccess={(result: any) =>
                   handleUpload(
                     "heroBackgroundPhotoUrl",

@@ -1,10 +1,10 @@
 import { connectToMongoDB } from "@/lib/mongodb";
-import Hall from "@/models/hall";
+import Patelian from "@/models/patelian";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PUT(req: NextRequest) {
   try {
-    const { field, value } = await req.json();
+    const { id, field, value } = await req.json();
     if (!field || !value) {
       return NextResponse.json(
         { message: "Missing required fields!" },
@@ -13,15 +13,15 @@ export async function PUT(req: NextRequest) {
     }
 
     await connectToMongoDB();
-    const updatedHallInfo = await Hall.findOneAndUpdate(
-      {},
+    const updatedPatelian = await Patelian.findOneAndUpdate(
+      { id },
       {
         $set: { [field]: value },
       },
       { new: true }
     );
 
-    return NextResponse.json({ updatedHallInfo }, { status: 200 });
+    return NextResponse.json({ updatedPatelian }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { message: "Internal server error:", error },

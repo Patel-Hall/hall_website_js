@@ -1,5 +1,4 @@
 import { connectToMongoDB } from "@/lib/mongodb";
-import User from "@/models/user";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import Patelian from "@/models/patelian";

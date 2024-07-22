@@ -15,6 +15,11 @@ export { default as Council } from "./sections/officeBearers/Council";
 //form exports
 export { default as LoginForm } from "./forms/LoginForm";
 export { default as RegisterForm } from "./forms/RegisterForm";
+export { default as EditProfileForm } from "./forms/EditProfileForm";
 
 //Auth
 export { default as AuthRoute } from "./auth/AuthRoute";
+
+//user sections
+export { default as UserProfileCard } from "./cards/UserProfileCard";
+export { default as UserDisplayCard } from "./cards/UserDisplayCard";

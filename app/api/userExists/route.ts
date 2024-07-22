@@ -6,8 +6,12 @@ export async function POST(req: NextRequest) {
   try {
     await connectToMongoDB();
     const { email } = await req.json();
-    const patelian = await Patelian.findOne({ email }).select("_id");
-    return NextResponse.json({ patelian });
+    const patelianId = await Patelian.findOne({ email }).select("_id");
+    if (patelianId) {
+      return NextResponse.json({ userExists: true });
+    } else {
+      return NextResponse.json({ userExists: false });
+    }
   } catch (error) {
     return NextResponse.json({ message: error });
   }

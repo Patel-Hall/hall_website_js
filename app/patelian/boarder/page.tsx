@@ -16,14 +16,14 @@ const page = () => {
   };
 
   return (
-    <div className="grid place-items-center">
+    <div className="flex flex-col items-center h-screen bg-secondary">
       Welcome, Boarder!
       <div>Name: {session?.user?.name}</div>
       <Link
-        href={"/patelian/boarder/editProfile"}
+        href={"/patelian/boarder/profile"}
         className="bg-primary px-6 py-2 mt-2"
       >
-        Edit Profile
+        Profile
       </Link>
       <button onClick={logoutUser} className="bg-primary px-6 py-2 mt-2">
         Log out
