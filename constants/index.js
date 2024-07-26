@@ -25,4 +25,6 @@ export const navBarItems = [
   },
 ];
 
+export const roles = ["Admin", "Boarder", "HCM", "Tech Team", "Alumnus"];
+
 export const testCouncil = [];

@@ -16,6 +16,7 @@ export { default as Council } from "./sections/officeBearers/Council";
 export { default as LoginForm } from "./forms/LoginForm";
 export { default as RegisterForm } from "./forms/RegisterForm";
 export { default as EditProfileForm } from "./forms/EditProfileForm";
+export { default as AddPostForm } from "./forms/AddPostForm";
 
 //Auth
 export { default as AuthRoute } from "./auth/AuthRoute";
@@ -23,3 +24,6 @@ export { default as AuthRoute } from "./auth/AuthRoute";
 //user sections
 export { default as UserProfileCard } from "./cards/UserProfileCard";
 export { default as UserDisplayCard } from "./cards/UserDisplayCard";
+
+// admin sections
+export { default as UsersList } from "./sections/admin/users/UsersList";

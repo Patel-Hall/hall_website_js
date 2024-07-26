@@ -26,6 +26,12 @@ const page = () => {
       >
         Edit Hall Information
       </Link>
+      <Link
+        href={"/patelian/admin/users"}
+        className="bg-primary px-6 py-2 mt-2"
+      >
+        Check users
+      </Link>
       <button onClick={logoutUser} className="bg-primary px-6 py-2 mt-2">
         Log out
       </button>
