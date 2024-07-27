@@ -27,3 +27,6 @@ export { default as UserDisplayCard } from "./cards/UserDisplayCard";
 
 // admin sections
 export { default as UsersList } from "./sections/admin/users/UsersList";
+
+//modal exports
+export { default as ModalPopUp } from "./modal/ModalPopUp";

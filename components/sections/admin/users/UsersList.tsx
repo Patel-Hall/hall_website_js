@@ -1,4 +1,5 @@
 "use client";
+import ModalPopUp from "@/components/modal/ModalPopUp";
 import { roles } from "@/constants";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -153,10 +154,17 @@ const UsersList = () => {
                       <td>
                         <button
                           className="bg-primary px-1 m-1 rounded-lg text-secondary"
-                          onClick={() => setShowAddPost(!showAddPost)}
+                          onClick={() => setShowAddPost(true)}
                         >
                           Add Post
                         </button>
+
+                        <ModalPopUp
+                          isOpen={showAddPost}
+                          onClose={() => setShowAddPost(false)}
+                        >
+                          <p>Patelian name: {patelian.name}</p>
+                        </ModalPopUp>
                       </td>
                     )}
                   </tr>
