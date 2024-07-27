@@ -19,7 +19,7 @@ const UserProfileCard = () => {
     setError("");
 
     try {
-      const response = await fetch("/api/getUser", {
+      const response = await fetch("/api/user/getUser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: session?.user?.email }),

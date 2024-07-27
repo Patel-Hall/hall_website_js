@@ -27,7 +27,7 @@ const ModalPopUp = ({ isOpen, onClose, children }: ModalPopUpProps) => {
               <HiX />
             </button>
 
-            <div>{children}</div>
+            <div className="m-2 p-2">{children}</div>
           </div>
         </div>
       )}

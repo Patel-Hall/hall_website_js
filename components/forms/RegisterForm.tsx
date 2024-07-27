@@ -51,7 +51,7 @@ const RegisterForm = () => {
     }
 
     try {
-      const resUserExists = await fetch("/api/userExists", {
+      const resUserExists = await fetch("/api/user/userExists", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -64,7 +64,7 @@ const RegisterForm = () => {
         return;
       }
 
-      const res = await fetch("/api/register", {
+      const res = await fetch("/api/user/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, instiEmail, rollNo, password }),

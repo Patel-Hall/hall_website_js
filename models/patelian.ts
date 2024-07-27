@@ -48,8 +48,25 @@ const patelianSchema = new Schema({
   },
   posts: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "POR",
+      post: {
+        type: String,
+        required: true,
+        enum: [
+          "Hall President",
+          "Second Senate Member",
+          "Student Auditor",
+          "General Secretary",
+          "Secretary",
+        ],
+      },
+      portfolio: {
+        type: String,
+        default: "",
+      },
+      session: {
+        type: String,
+        required: true,
+      },
     },
   ],
 });
