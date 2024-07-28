@@ -1,12 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { testCouncil } from "@/constants";
 import CouncilCard from "@/components/cards/CouncilCard";
-import UserDisplayCard from "@/components/cards/UserDisplayCard";
 
 interface CouncilMember {
   name: string;
   post: string;
+  portfolio: string;
   imgUrl: string;
   facebookProfile: string;
   linkedinProfile: string;

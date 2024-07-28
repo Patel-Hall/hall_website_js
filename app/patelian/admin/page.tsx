@@ -32,6 +32,9 @@ const page = () => {
       >
         Check users
       </Link>
+      <Link href={"/patelian/profile"} className="bg-primary px-6 py-2 mt-2">
+        Profile
+      </Link>
       <button onClick={logoutUser} className="bg-primary px-6 py-2 mt-2">
         Log out
       </button>

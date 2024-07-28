@@ -1,3 +1,4 @@
+import { emptyProfileImageUrl } from "@/public/variables";
 import { CldImage } from "next-cloudinary";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
@@ -6,6 +7,7 @@ interface Props {
   member: {
     name: string;
     post: string;
+    portfolio: string;
     imgUrl: string;
     facebookProfile: string;
     linkedinProfile: string;
@@ -14,16 +16,27 @@ interface Props {
 
 const CouncilCard = (props: Props) => {
   return (
-    <div className="bg-primary w-[300px] h-[400px] rounded-lg">
+    <div className="bg-primary w-[300px] h-[450px] rounded-lg">
       <div className="p-5">
-        <CldImage
-          src={props.member.imgUrl}
-          alt="HCM Profile"
-          className="w-auto"
-          height={200}
-          width={200}
-          crop="auto"
-        />
+        {props.member.imgUrl ? (
+          <CldImage
+            src={props.member.imgUrl}
+            alt="HCM Profile"
+            className="w-auto"
+            height={200}
+            width={200}
+            crop="auto"
+          />
+        ) : (
+          <CldImage
+            src={emptyProfileImageUrl}
+            alt="HCM Profile"
+            className="w-auto"
+            height={200}
+            width={200}
+            crop="auto"
+          />
+        )}
       </div>
       <div
         className="w-full flex justify-center uppercase text-lg font-bold text-secondary"
@@ -36,6 +49,12 @@ const CouncilCard = (props: Props) => {
         style={{ fontFamily: "Shango" }}
       >
         {props.member.post}
+      </div>
+      <div
+        className="w-full flex justify-center uppercase text-md text-secondary"
+        style={{ fontFamily: "Shango" }}
+      >
+        {props.member.portfolio}
       </div>
       <div className="w-full mt-7 flex flex-row gap-3 justify-center">
         <SocialIcon

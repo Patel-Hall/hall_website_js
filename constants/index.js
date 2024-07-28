@@ -66,8 +66,6 @@ export const posts = new Map([
   ],
 ]);
 
-export const testCouncil = [];
-
 export const academicYears = [
   "1951-52",
   "1952-53",

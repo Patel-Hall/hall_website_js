@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 interface CouncilMember {
   name: string;
   post: string;
+  portfolio: string;
   imgUrl: string;
   facebookProfile: string;
   linkedinProfile: string;
@@ -24,7 +25,8 @@ export async function POST(req: NextRequest) {
               const newPost = `${post.post} ${post.portfolio}`;
               const newMember: CouncilMember = {
                 name: patelian.name,
-                post: newPost,
+                post: post.post,
+                portfolio: post.portfolio,
                 imgUrl: patelian.profileImageUrl,
                 facebookProfile: patelian.facebookProfile,
                 linkedinProfile: patelian.linkedinProfile,

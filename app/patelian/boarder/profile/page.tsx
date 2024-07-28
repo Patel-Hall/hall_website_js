@@ -1,48 +1,9 @@
 "use client";
 import { UserProfileCard } from "@/components";
-import { emptyProfileImageUrl } from "@/public/variables";
-import { signOut, useSession } from "next-auth/react";
-import { CldImage } from "next-cloudinary";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 
 const page = () => {
-  const { data: session } = useSession();
-  const [patelian, setPatelian] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<any>(null);
-
-  useEffect(() => {
-    getUserDetails();
-  }, [session]);
-
-  const getUserDetails = async () => {
-    console.log(session?.user?.email);
-    setLoading(true);
-    setError("");
-
-    try {
-      const response = await fetch("/api/user/getUser", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: session?.user?.email }),
-      });
-      const data = await response.json();
-      console.log(data.patelian.instiEmail);
-
-      if (response.ok) {
-        setPatelian(data.patelian);
-        setError("");
-      } else {
-        setError(data);
-      }
-    } catch (err) {
-      setError(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const logoutUser = async () => {
     try {
       await signOut();

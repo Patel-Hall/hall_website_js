@@ -1,3 +1,4 @@
+import { emptyProfileImageUrl } from "@/public/variables";
 import { CldImage } from "next-cloudinary";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
@@ -15,14 +16,25 @@ const UserDisplayCard = (props: Props) => {
   return (
     <div className="bg-primary w-[300px] h-[400px] rounded-lg">
       <div className="p-5">
-        <CldImage
-          src={props.member.imgUrl}
-          alt="HCM Profile"
-          className="w-auto rounded-lg"
-          height={200}
-          width={200}
-          crop="auto"
-        />
+        {props.member.imgUrl ? (
+          <CldImage
+            src={props.member.imgUrl}
+            alt="HCM Profile"
+            className="w-auto rounded-lg"
+            height={200}
+            width={200}
+            crop="auto"
+          />
+        ) : (
+          <CldImage
+            src={emptyProfileImageUrl}
+            alt="HCM Profile"
+            className="w-auto rounded-lg"
+            height={200}
+            width={200}
+            crop="auto"
+          />
+        )}
       </div>
       <div
         className="w-full flex justify-center uppercase text-lg font-bold text-secondary"

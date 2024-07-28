@@ -10,7 +10,7 @@ const page = async () => {
   if (session) redirect("/patelian");
 
   return (
-    <div className="bg-secondary h-screen grid place-items-center">
+    <div className="bg-secondary h-screen flex items-center justify-center">
       <LoginForm />
     </div>
   );

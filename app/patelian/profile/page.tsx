@@ -1,12 +1,9 @@
 "use client";
-import { AuthRoute } from "@/components";
+import { UserProfileCard } from "@/components";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
 
 const page = () => {
-  const { data: session } = useSession();
-
   const logoutUser = async () => {
     try {
       await signOut();
@@ -14,13 +11,14 @@ const page = () => {
       console.log(error);
     }
   };
-
   return (
-    <div>
-      Welcome, Tech Team Member!
-      <div>Name: {session?.user?.name}</div>
-      <Link href={"/patelian/profile"} className="bg-primary px-6 py-2 mt-2">
-        Profile
+    <div className="h-screen bg-secondary flex flex-col items-center justify-center">
+      <UserProfileCard />
+      <Link
+        href={"/patelian/profile/edit"}
+        className="bg-primary text-center p-2 mt-2"
+      >
+        Edit Profile
       </Link>
       <button onClick={logoutUser} className="bg-primary px-6 py-2 mt-2">
         Log out
